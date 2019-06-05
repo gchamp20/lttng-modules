@@ -26,6 +26,10 @@ ifneq ($(wildcard $(i2c_dep)),)
   obj-$(CONFIG_LTTNG) += lttng-probe-i2c.o
 endif
 
+ifneq ($(CONFIG_XEN),)
+  obj-$(CONFIG_LTTNG) += lttng-probe-xen.o
+endif # CONFIG_XEN
+
 ifneq ($(CONFIG_KVM),)
   obj-$(CONFIG_LTTNG) += lttng-probe-kvm.o
   ifneq ($(CONFIG_X86),)
