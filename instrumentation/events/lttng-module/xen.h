@@ -21,6 +21,17 @@ LTTNG_TRACEPOINT_EVENT(xen_mc_entry,
 		    )
 )
 
+LTTNG_TRACEPOINT_EVENT(xen_mc_callback,
+	    TP_PROTO(xen_mc_callback_fn_t fn, void *data),
+
+	    TP_ARGS(fn, data),
+
+	    TP_FIELDS(
+		    ctf_integer_hex(void *, callback, fn)
+		    ctf_integer_hex(void *, data, data)
+		    )
+)
+
 #endif /*  LTTNG_TRACE_XEN_H */
 
 /* This part must be outside protection */
