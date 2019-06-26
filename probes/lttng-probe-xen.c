@@ -1,16 +1,15 @@
 /* SPDX-License-Identifier: (GPL-2.0 or LGPL-2.1)
  *
- * probes/lttng-probe-kvm.c
+ * probes/lttng-probe-xen.c
  *
- * LTTng kvm probes.
+ * LTTng xen probes.
  *
  * Copyright (C) 2010-2012 Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
  */
 
 #include <linux/module.h>
+#include <linux/kernel.h>
 #include <lttng-tracer.h>
-#include <asm/xen/trace_types.h>
-#include <xen/interface/xen.h>
 
 /*
  * Create the tracepoint static inlines from the kernel to validate that our
@@ -25,9 +24,9 @@
  */
 #define LTTNG_PACKAGE_BUILD
 #define CREATE_TRACE_POINTS
+#define TRACE_INCLUDE_PATH instrumentation/events/lttng-module
 
-#define TRACE_INCLUDE_PATH instrumentation/events/lttng-module/arch/x86/xen
-#include <instrumentation/events/lttng-module/arch/x86/xen/xen.h>
+#include <instrumentation/events/lttng-module/xen.h>
 
 MODULE_LICENSE("GPL and additional rights");
 MODULE_AUTHOR("Mathieu Desnoyers <mathieu.desnoyers@efficios.com>");
